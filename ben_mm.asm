@@ -34,7 +34,7 @@ ben_mm:
     rep stosd
 
     mov di, .start
-    mov edx, 0x534D4150
+    mov edx, 0x534D4150 ;  Set EDX to the magic number 0x534D4150. 
     xor ebx, ebx
 
 ; ------------------------------------------------------------------
