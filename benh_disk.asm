@@ -1,10 +1,13 @@
 ; ==================================================================
-; benOS Bootloader - Disk Stage
+; benOS Bootloader
 ; Copyright (C) 2018 Bench Computer, Inc. -- see ~/LICENSE
 ;
-; Based on a free boot loader by E Dehling and the boot loading functions
-; found in Rust's Redox. Pieces from Ubuntu's boot loading functions
-; were also used in the benOS bootloader's library of parts. 
+; The official bootloader for benOS and BenchX desktop/laptop products.
+; The first bootloader built for a decentralized operating system.
+; Many bootloaders were looked at and utilized in the creation of 
+; benOS's BenchX bootloader.
+; 
+; Bootloaders we utilized: Ubuntu, MikeOS, Debian, Linux Mint, ReOS
 ; ==================================================================
 
 sectalign off
@@ -51,13 +54,13 @@ benos_launch_end:
 ; benOS If Microkernel Has Already Loaded, Load FileSystem
 ; ------------------------------------------------------------------
 
-    align BLOCK_SIZE, db 0
+    align X_BLOCK_SIZE, db 0
     %ifdef BEN_FILESYSTEM
         benos_filesystem:
             %defstr BEN_FILESYSTEM_STR %[BEN_FILESYSTEM]
             incbin BEN_FILESYSTEM_STR
         .end:
-        align BLOCK_SIZE, db 0
+        align X_BLOCK_SIZE, db 0
 
 ; --------------------------------------------------------------------------------
 ; benOS If Microkernel and FileSystem Already Loaded, Execute Loaded Filesystem
