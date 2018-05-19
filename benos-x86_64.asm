@@ -116,7 +116,7 @@ startup_benos_arch:
 
     xor edi, edi
     xor eax, eax
-    mov ecx, 6 * 4096 / 4 ;PML4, PDP, 4 PD / moves 4 Bytes at once
+    mov ecx, 6 * 4096 / 4 
     cld
     rep stosd
 
