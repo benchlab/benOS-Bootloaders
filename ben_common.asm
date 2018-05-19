@@ -138,7 +138,7 @@ load_extent:
 ; benOS Common Loaders - Setup benUnreal Mode
 ; ------------------------------------------------------------------
 
-    call ben_unreal
+    call benur
 
     pop edi
 
@@ -181,7 +181,7 @@ load_extent:
 ; benOS Common Loaders - Moving Remnants Of Microkernel
 ; ------------------------------------------------------------------
 
-    call ben_unreal
+    call benur
 
     pop edi
     pop ecx
