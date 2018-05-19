@@ -1,1 +1,66 @@
+benOS Bootloader CHANGELOG
+
+## Unreleased [v1.0.2] - 2018-05-19
+
+### Added
+
+### Changed
+
+### Removed
+
+-------
+
+## [v1.0.1] - 2018-05-19
+
+### Added
+- Added benFS to the benOS Bootloader
+- Added benOS DF Configuration For Bootloader
+- Updated BENUR Bootloader Calls
+- Added BENUR Mode To benOS Bootloader
+- Added note about EDX's magic number at the MM bootloader stage
+- Added benOS Bootloader Memory Mapping (MM) [ben_mm] Stage
+- Added in-depth look into benOS's Mercury bootloader.
+- Added BenPlay BIOS Extension Configuration
+- Added ben_common bootloader functions and loaders
+- Added benplay.asm
+- Added ben_common bootloader functions and loaders
+- Added notes, sectional explainers and cleaned up code to x86_64 initi… 
+- Added `benOS Disk Loading Stage` to benOS bootloader
+- Added benconfig to bootloader - to initialize BenConfig
+- Added the Global Descriptor Table (GDT) struc to benOS bootloader
+- Added print_stage to the benOS Bootloader
+
+### Changed
+- Update BenStart
+- Updated Copyright In README
+- Updated to X_BLOCK_SIZE
+- Updated benur.asm filename for all-new BENUR mode.
+- Updated CHANGELOG
+- Updated Version to 1.0.1
+
+### Removed
+- Removed `disk.asm`
+- Removed notes, since new sectionals are in all files now. 
+- Removed bad header from initial loader (ben_start.asm)
+- Removed old disk loader used for testing - moved to bootloader-test l…  …
+- Removed tests from notes and added to bootloader-test library.
+
+-------
+
+## [v1.0.0] - 2018-05-18
+
+### Added
+- Create README.md
+- Create LICENSE  
+- Added startup for x86_64 benOS-based hardware
+- Create disk.asm 
+- Added initial BenStart boot file
+- Create CHANGELOG
+
+### Changed
+- Changed README with version, license, credits and attributes
+- Changed README definitions and the bootloader overview
+
+### Removed
+- Removed `disk.asm`
 
