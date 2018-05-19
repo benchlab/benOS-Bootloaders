@@ -75,9 +75,9 @@ startup_ap:
 
     lgdt [gdtr]
 
-    mov ecx, 0xC0000080               ; Read from the EFER MSR.
+    mov ecx, 0xC0000080               ; Read via the Extended Feature Enable Register Model Specific Registers.
     rdmsr
-    or eax, 1 << 11 | 1 << 8          ; Set the Long-Mode-Enable and NXE bit.
+    or eax, 1 << 11 | 1 << 8          ; Enable Long-Mode-Enable and NXE bit for the USE64 Variable later.
     wrmsr
 
 ; ======================================================================
@@ -85,7 +85,7 @@ startup_ap:
 ; ======================================================================
 
     mov ebx, cr0
-    or ebx, 1 << 31 | 1 << 16 | 1                ;Bit 31: Paging, Bit 16: write protect kernel, Bit 0: Protected Mode
+    or ebx, 1 << 31 | 1 << 16 | 1     ;Bit 31: benOS Paging, Bit 16: Write-Protected benOS Microkernel, Bit 0: Protected Mode
     mov cr0, ebx
 
 ; ================================================================================================
@@ -126,7 +126,6 @@ startup_benos_arch:
     ; benOS Bootloader - Connect 1st PML4 and 2nd to Last PML4 to PDP
     ; ============================================================================
 
-    ;Link first PML4 and second to last PML4 to PDP
     mov DWORD [es:edi], 0x71000 | 1 << 1 | 1
     mov DWORD [es:edi + 510*8], 0x71000 | 1 << 1 | 1
     add edi, 0x1000
@@ -291,7 +290,10 @@ long_mode:
 
     mov rdi, args
 
-    ; entry point
+; =================================================================================
+; benOS Bootloader - benOS Microkernel Entry Point
+; =================================================================================
+
     mov rax, [args.kernel_base]
     call [rax + 0x18]
  
