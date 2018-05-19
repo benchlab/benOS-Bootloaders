@@ -21,7 +21,7 @@ B. `benOS Microkernel` [KERNEL] < global benOS microkernel variable within the b
   3. `BenPlay` - BenPlay display boot stage (benplay.asm)
 
 C. `benInit`
-  1. `ramDiskInit` - At this boot stage, drivers, including drivers for the `benFS` (benOS Local File System) are loaded as     apart of the benOS microkernel image. Due to the way we load drivers at the `ramDiskInit` stage, it's an easy process when wanting to modify benOS, for loading different local filesystems, other than `benFS`, as the Administrative user. It is also just as easy to move benOS processes and/or drivers in/out of the `ramDisk`.
+  1. `ramDiskInit` - At this boot stage, drivers, including drivers for the `benFS` (benOS Local File System) are loaded as     apart of the benOS microkernel image. Due to the way we load drivers at the `ramDiskInit` stage, it's an easy process when     wanting to modify benOS, for loading different local filesystems, other than `benFS`, as the **Administrative user**. It is   also just as easy to move benOS processes and/or drivers in/out of the `ramDisk`.
  
 Example of how benOS loads `benFS` 
   
@@ -42,12 +42,14 @@ Example of how benOS loads `benFS`
   2. `benFS Loader` - benOS Local FileSystem is loaded 
   
 D. `Login`
-  1. benOS Server utilizes a terminal-first approach but can load the benOS GUI by simply typing 'x'
-  2. benOS Desktop utilizes a GUI-first strategy and loads the GUI login screen immediately upon the finalization of the         benOS Bootloader. 
+  1. `benOS Server` utilizes a terminal-first approach but can load the benOS GUI by simply typing 'x'
+  2. `benOS Desktop` utilizes a GUI-first strategy and loads the GUI login screen immediately upon the finalization of the         benOS Bootloader. 
  
 **Note:** ***`memoryMap` and `BenPlay` are loaded along with the kernel, because they heavily rely on functions within the benOS BIOS and it's a bit difficult to access them once the kernel has been loaded, so it is best to add them to the boot process at the same time we load the benOS microkernel.***
 
-Using `interrupt` 0xFF, we load the benOS microkernel through an `interrupt table`. With benOS and our Assembly-based bootloader, the microkernel interrupt will only be available during the loading stages of `benOS bootloader`. Afterwards the benOS bootloader switches to the next stage `ben_mm` where the benOS microkernel duplicates the `memoryMap` via the `lowMemory`, initiates `pageMapping`, distributes the global ENV object and associated variables that are defined in the benOS microkernel. It takes the ENV object and then begins to initialize Bench Hardware-related drivers like `BenPlay` and schemes, directly into the benOS microkernel. It will also print out benOS microkernel information at this boot stage, like you can see below: 
+Using `interrupt` 0xFF, we load the benOS microkernel through an `interrupt table`. With benOS and our Assembly-based bootloader, the microkernel interrupt will only be available during the loading stages of `benOS bootloader`. Afterwards the benOS bootloader switches to the next stage `ben_mm` where the benOS microkernel duplicates the `memoryMap` via the `lowMemory`, initiates `pageMapping`, distributes the global ENV object and associated variables that are defined in the benOS microkernel. It takes the ENV object and then begins to initialize Bench Hardware-related drivers like `BenPlay` and schemes, directly into the benOS microkernel. It will also print out benOS microkernel information at this boot stage, like you can see below.
+
+### benOS Microkernel Info (Printout Example)
 
 ```text
 benOS 64 bits
