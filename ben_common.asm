@@ -207,7 +207,7 @@ load_extent:
 ; 'benconfig.asm' - benOS Bootloader Configuration
 ; 'ben_df.asm' - benOS Bootloader Diffs
 ; 'global_descriptor_table_entry.inc' - benOS GDTE 
-; 'ben_ur.asm' - benOS Bootloader Unreal Mode
+; 'benur.asm' - benOS Bootloader BENUR Mode
 ; 'ben_mm.asm' - benOS Bootloader Memory Mapping 
 ; 'benplay.asm' - benOS BenPlay Bootloader Video Config / Driver Loader
 ; 'startup_ben.asm' - benOS Bootloader Launcher
@@ -217,7 +217,7 @@ load_extent:
 %include "benconfig.asm"
 %include "ben_df.inc"
 %include "global_descriptor_table_entry.inc"
-%include "ben_ur.asm"
+%include "benur.asm"
 %include "ben_mm.asm"
 %include "benplay.asm"
 %include "startup_ben.asm"
