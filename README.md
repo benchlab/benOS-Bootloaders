@@ -16,7 +16,7 @@ The original LICENSE or LICENSES for the originating software(s) and library or 
 
 ## LICENSE
 BENCH LICENSE<br>
-For benos-bootloader
+For benOS Bootloader
 <br><br>
 Copyright (c) 2018 Bench Computer, Inc. <legal@benchx.io>
 <br><br>
